@@ -1,4 +1,64 @@
+"use client";
+import { useEffect } from "react";
 export default function Home() {
+  useEffect(() => {
+    // ✅ Services nav -> change active slider
+    const navItems = document.querySelectorAll(".services-nav .nav-item");
+    const sliders = document.querySelectorAll(".services-slider-container");
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        // remove active from all
+        navItems.forEach((el) => el.classList.remove("active"));
+        sliders.forEach((s) => s.classList.remove("active"));
+
+        // add active to clicked
+        item.classList.add("active");
+        const targetId = item.getAttribute("data-target");
+        if (targetId) {
+          const targetSlider = document.getElementById(targetId);
+          if (targetSlider) targetSlider.classList.add("active");
+        }
+      });
+    });
+
+    // ✅ Statistics Counter
+    const counters = document.querySelectorAll<HTMLElement>(".counter");
+
+    const runCounter = (counter: HTMLElement) => {
+      const target = parseInt(counter.getAttribute("data-target") || "0", 10);
+      const format = counter.getAttribute("data-format");
+      let count = 0;
+      const speed = target / 200; // adjust speed
+
+      const updateCount = () => {
+        count += speed;
+        if (count < target) {
+          if (format === "k") {
+            counter.innerText = Math.floor(count / 1000) + "k";
+          } else if (format === "k-decimal") {
+            counter.innerText = (count / 1000).toFixed(1) + "k";
+          } else {
+            counter.innerText = Math.floor(count).toString();
+          }
+          requestAnimationFrame(updateCount);
+        } else {
+          // final value
+          if (format === "k") {
+            counter.innerText = Math.floor(target / 1000) + "k";
+          } else if (format === "k-decimal") {
+            counter.innerText = (target / 1000).toFixed(1) + "k";
+          } else {
+            counter.innerText = target.toString();
+          }
+        }
+      };
+
+      updateCount();
+    };
+
+    counters.forEach((c) => runCounter(c));
+  }, []);
   return (
     <>
       {/* ✅ Hero Section */}
@@ -20,7 +80,7 @@ export default function Home() {
                 <i className="fa-solid fa-arrow-right"></i>
               </span>
             </a>
-            <a href="#" className="btn btn-contact">
+            <a href="#" className="btn btn-contact">  
               Get in touch
               <span className="btn-icon">
                 <i className="fa-solid fa-arrow-right"></i>
@@ -39,76 +99,6 @@ export default function Home() {
         <img src="/img/amazon-logo.png" alt="Amazon" />
       </div>
 
-      {/* ✅ Services Section */}
-      <section className="services-section" id="services">
-        <div className="services-container">
-          <div className="services-header">
-            <h2>
-              Services <span className="we-offer">WE</span>OFFER
-            </h2>
-          </div>
-
-          <div className="services-nav">
-            <div className="nav-item active" data-target="slider-vapt">
-              Offensive Security & VAPT
-            </div>
-            <div className="nav-item" data-target="slider-data">
-              Data Security
-            </div>
-            <div className="nav-item" data-target="slider-code">
-              Comprehensive Code Security
-            </div>
-          </div>
-
-          {/* Example slider */}
-          <div className="services-slider-container" id="slider-vapt">
-            <div className="services-card-slider">
-              <div className="service-card active d-flex justify-content-center align-items-center">
-                <img src="/img/lock.png" alt="Unlocked Lock" className="lock-icon" />
-                <div className="service-card-content">
-                  <h4>COMPREHENSIVE CODE SECURITY</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ✅ Statistics Section */}
-      <section className="statistics-section pb-5">
-        <div className="glassy-card">
-          <div className="row text-center">
-            <div className="col-6 col-md-3 stat-item">
-              <h3 className="counter" data-target="1000">
-                0
-              </h3>
-              <p>Applications Tested</p>
-            </div>
-            <div className="col-6 col-md-3 stat-item">
-              <h3 className="counter" data-target="25000" data-format="k">
-                0
-              </h3>
-              <p>IT Infra Devices Tested</p>
-            </div>
-            <div className="col-6 col-md-3 stat-item">
-              <h3 className="counter" data-target="3100" data-format="k-decimal">
-                0
-              </h3>
-              <p>Weeks Of Testing</p>
-            </div>
-            <div className="col-6 col-md-3 stat-item">
-              <h3 className="counter" data-target="1500">
-                0
-              </h3>
-              <p>Vulnerabilities Detected</p>
-            </div>
-          </div>
-        </div>
-      </section>
        {/* <!-- Services Section --> */}
       <section className="services-section" id="services">
         <div className="services-container">
