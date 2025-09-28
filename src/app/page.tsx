@@ -1,64 +1,222 @@
 "use client";
 import { useEffect } from "react";
 export default function Home() {
-  useEffect(() => {
-    // ✅ Services nav -> change active slider
-    const navItems = document.querySelectorAll(".services-nav .nav-item");
-    const sliders = document.querySelectorAll(".services-slider-container");
+useEffect(() => {
+  // ✅ Services nav -> change active slider
+  const navItems = document.querySelectorAll(".services-nav .nav-item");
+  const sliders = document.querySelectorAll(".services-slider-container");
 
-    navItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        // remove active from all
-        navItems.forEach((el) => el.classList.remove("active"));
-        sliders.forEach((s) => s.classList.remove("active"));
+  navItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      navItems.forEach((el) => el.classList.remove("active"));
+      sliders.forEach((s) => s.classList.remove("active"));
 
-        // add active to clicked
-        item.classList.add("active");
-        const targetId = item.getAttribute("data-target");
-        if (targetId) {
-          const targetSlider = document.getElementById(targetId);
-          if (targetSlider) targetSlider.classList.add("active");
-        }
-      });
+      item.classList.add("active");
+      const targetId = item.getAttribute("data-target");
+      if (targetId) {
+        const targetSlider = document.getElementById(targetId);
+        if (targetSlider) targetSlider.classList.add("active");
+      }
     });
+  });
 
-    // ✅ Statistics Counter
-    const counters = document.querySelectorAll<HTMLElement>(".counter");
+  // ✅ Services slider (prev/next + dots)
+  const updateSlider = (slider: HTMLElement, newIndex: number) => {
+    const cards = slider.querySelectorAll<HTMLElement>(".service-card");
+    const dots = slider.parentElement?.querySelectorAll<HTMLElement>(".dot");
+    const title = slider.parentElement?.querySelector<HTMLElement>(
+      "#currentServiceTitle"
+    );
 
-    const runCounter = (counter: HTMLElement) => {
-      const target = parseInt(counter.getAttribute("data-target") || "0", 10);
-      const format = counter.getAttribute("data-format");
-      let count = 0;
-      const speed = target / 200; // adjust speed
+    const total = cards.length;
+    cards.forEach(
+      (c) =>
+        (c.className =
+          "service-card d-flex justify-content-center align-items-center")
+    );
 
-      const updateCount = () => {
-        count += speed;
-        if (count < target) {
-          if (format === "k") {
-            counter.innerText = Math.floor(count / 1000) + "k";
-          } else if (format === "k-decimal") {
-            counter.innerText = (count / 1000).toFixed(1) + "k";
-          } else {
-            counter.innerText = Math.floor(count).toString();
-          }
-          requestAnimationFrame(updateCount);
-        } else {
-          // final value
-          if (format === "k") {
-            counter.innerText = Math.floor(target / 1000) + "k";
-          } else if (format === "k-decimal") {
-            counter.innerText = (target / 1000).toFixed(1) + "k";
-          } else {
-            counter.innerText = target.toString();
-          }
-        }
-      };
-
-      updateCount();
+    const setClass = (i: number, cls: string) => {
+      cards[(newIndex + i + total) % total].classList.add(cls);
     };
 
-    counters.forEach((c) => runCounter(c));
-  }, []);
+    // Assign classes
+    cards[newIndex].classList.add("active");
+    setClass(-1, "prev");
+    setClass(1, "next");
+    setClass(-2, "far-prev");
+    setClass(2, "far-next");
+
+    // Update dots
+    dots?.forEach((d) => d.classList.remove("active"));
+    dots?.[newIndex]?.classList.add("active");
+
+    // Update title
+    if (title) {
+      title.textContent =
+        cards[newIndex].querySelector("h4")?.textContent || "";
+    }
+  };
+
+  document
+    .querySelectorAll<HTMLElement>(".services-slider-container")
+    .forEach((slider) => {
+      let currentIndex = 2; // start index
+
+      const prevBtn = slider.parentElement?.querySelector("#prevBtn");
+      const nextBtn = slider.parentElement?.querySelector("#nextBtn");
+      const dots = slider.parentElement?.querySelectorAll<HTMLElement>(".dot");
+
+      prevBtn?.addEventListener("click", () => {
+        currentIndex =
+          (currentIndex -
+            1 +
+            slider.querySelectorAll(".service-card").length) %
+          slider.querySelectorAll(".service-card").length;
+        updateSlider(slider, currentIndex);
+      });
+
+      nextBtn?.addEventListener("click", () => {
+        currentIndex =
+          (currentIndex + 1) %
+          slider.querySelectorAll(".service-card").length;
+        updateSlider(slider, currentIndex);
+      });
+
+      dots?.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const idx = parseInt(dot.getAttribute("data-index") || "0", 10);
+          currentIndex = idx;
+          updateSlider(slider, currentIndex);
+        });
+      });
+
+      updateSlider(slider, currentIndex);
+    });
+
+  // ✅ Statistics Counter
+  const counters = document.querySelectorAll<HTMLElement>(".counter");
+
+  const runCounter = (counter: HTMLElement) => {
+    const target = parseInt(counter.getAttribute("data-target") || "0", 10);
+    const format = counter.getAttribute("data-format");
+    let count = 0;
+    const speed = target / 200;
+
+    const updateCount = () => {
+      count += speed;
+      if (count < target) {
+        if (format === "k") {
+          counter.innerText = Math.floor(count / 1000) + "k";
+        } else if (format === "k-decimal") {
+          counter.innerText = (count / 1000).toFixed(1) + "k";
+        } else {
+          counter.innerText = Math.floor(count).toString();
+        }
+        requestAnimationFrame(updateCount);
+      } else {
+        if (format === "k") {
+          counter.innerText = Math.floor(target / 1000) + "k";
+        } else if (format === "k-decimal") {
+          counter.innerText = (target / 1000).toFixed(1) + "k";
+        } else {
+          counter.innerText = target.toString();
+        }
+      }
+    };
+
+    updateCount();
+  };
+
+  counters.forEach((c) => runCounter(c));
+
+  // ✅ Certification Tabs Switching
+  const certTabs = document.querySelectorAll(".cert-tab");
+  const certSliders = document.querySelectorAll(".cert-card-slider");
+
+  certTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      certTabs.forEach((t) => t.classList.remove("active"));
+      certSliders.forEach((s) => s.classList.remove("active"));
+
+      tab.classList.add("active");
+      const cert = tab.getAttribute("data-cert");
+      if (cert) {
+        const target = document.getElementById(`slider-${cert}`);
+        if (target) target.classList.add("active");
+      }
+    });
+  });
+
+  // ✅ Certification Prev/Next Navigation
+  const prevBtn = document.getElementById("certPrev");
+  const nextBtn = document.getElementById("certNext");
+
+  const moveCertSlide = (direction: "next" | "prev") => {
+    const activeSlider = document.querySelector(".cert-card-slider.active");
+    if (!activeSlider) return;
+
+    const cards = activeSlider.querySelectorAll(".cert-card");
+    let currentIndex = 0;
+
+    cards.forEach((card, i) => {
+      if (card.classList.contains("active")) {
+        currentIndex = i;
+      }
+      card.className = "cert-card"; // reset
+    });
+
+    let newIndex =
+      direction === "next"
+        ? (currentIndex + 1) % cards.length
+        : (currentIndex - 1 + cards.length) % cards.length;
+
+    cards[newIndex].classList.add("active");
+    cards[(newIndex - 1 + cards.length) % cards.length].classList.add("prev");
+    cards[(newIndex + 1) % cards.length].classList.add("next");
+    cards[(newIndex - 2 + cards.length) % cards.length].classList.add(
+      "far-prev"
+    );
+    cards[(newIndex + 2) % cards.length].classList.add("far-next");
+  };
+
+  if (nextBtn) nextBtn.addEventListener("click", () => moveCertSlide("next"));
+  if (prevBtn) prevBtn.addEventListener("click", () => moveCertSlide("prev"));
+
+  // ✅ Testimonial Auto-Slider
+  const wrapper = document.getElementById("testimonialSliderWrapper");
+  if (wrapper) {
+    const cards = wrapper.querySelectorAll<HTMLElement>(".testimonial-card");
+    let index = 0;
+    const total = cards.length;
+
+    const moveSlide = () => {
+      index = (index + 1) % total;
+      wrapper.style.transform = `translateX(${-index * 100}%)`;
+      wrapper.style.transition = "transform 0.6s ease-in-out";
+    };
+
+    // init wrapper style
+    wrapper.style.display = "flex";
+    wrapper.style.transition = "transform 0.6s ease-in-out";
+    wrapper.style.width = `${total * 100}%`;
+
+    const interval = setInterval(moveSlide, 3000);
+
+    // cleanup interval on unmount
+    return () => clearInterval(interval);
+  }
+
+  // ✅ Cleanup
+  return () => {
+    navItems.forEach((item) => item.replaceWith(item.cloneNode(true)));
+    certTabs.forEach((tab) => tab.replaceWith(tab.cloneNode(true)));
+    if (nextBtn) nextBtn.replaceWith(nextBtn.cloneNode(true));
+    if (prevBtn) prevBtn.replaceWith(prevBtn.cloneNode(true));
+  };
+}, []);
+
+
+
   return (
     <>
       {/* ✅ Hero Section */}
@@ -605,21 +763,27 @@ export default function Home() {
       </section>
 
       {/* <!-- Certification Section --> */}
-      <section className="certification-section">
+     <section className="certification-section">
         <div className="content-wrapper">
           <div className="certification-header">
-            <h2><span className="we-offer">Our</span>Certification</h2>
+            <h2>
+              <span className="we-offer">Our</span>Certification
+            </h2>
           </div>
 
+          {/* Tabs */}
           <div className="certification-tabs">
             <span className="cert-tab active" data-cert="A">A Certificate</span>
             <span className="cert-tab" data-cert="B">B Certificate</span>
           </div>
 
+          {/* Slider */}
           <div className="cert-slider-container">
             <button className="cert-slider-btn cert-prev-btn" id="certPrev">
               <img src="img/Vectorr-2.png" alt="Previous" />
             </button>
+
+            {/* A Certificate slider */}
             <div id="slider-A" className="cert-card-slider active">
               <div className="cert-card active">
                 <img src="img/Picture (2).png" alt="Certification 1" />
@@ -637,6 +801,8 @@ export default function Home() {
                 <img src="img/Picture (3).png" alt="Certification 5" />
               </div>
             </div>
+
+            {/* B Certificate slider */}
             <div id="slider-B" className="cert-card-slider">
               <div className="cert-card active">
                 <img src="img/Picture (2).png" alt="Certification 1" />
@@ -654,16 +820,17 @@ export default function Home() {
                 <img src="img/Picture (4).png" alt="Certification 5" />
               </div>
             </div>
+
             <button className="cert-slider-btn cert-next-btn" id="certNext">
               <img src="img/Vectorr-1.png" alt="Next" />
             </button>
           </div>
 
+          {/* Info box */}
           <div className="cert-info">
             <div className="info-text" id="certText">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
             <div className="info-boxes">
               <div className="info-box">
