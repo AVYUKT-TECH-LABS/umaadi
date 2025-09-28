@@ -13,7 +13,7 @@ export default function ContactPage() {
             <div className="col-lg-5 col-md-6 mb-4 mb-md-0">
               <div className="pe-lg-4">
                 <h2 className="contact-title">
-                  Get in Touch –<br />
+                  Get in Touch -<br />
                   We're Here to Help!
                 </h2>
                 <p className="contact-subtitle">

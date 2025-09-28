@@ -361,32 +361,114 @@ export default function Service1Page() {
 
       {/* FAQ Section */}
       <div className="faq-container">
+        {/* <!-- Left Section --> */}
         <div className="faq-left">
           <h1 className="faq-title">FAQs</h1>
           <p className="faq-description">
-            Have questions? Here you'll find the answers most valued by our partners...
+            Have questions? Here you'll find the answers most valued by our
+            partners, along with access to step-by-step instructions and
+            support.
           </p>
+
+          <div className="newsletter-section">
+            <h3 className="newsletter-title">Join our monthly Newsletter</h3>
+            <form className="newsletter-form">
+              <input
+                type="email"
+                className="newsletter-input"
+                placeholder="Email"
+                required
+              />
+              <button type="submit" className="newsletter-btn">→</button>
+            </form>
+          </div>
         </div>
+
+        {/* <!-- Right Section - FAQ Items --> */}
         <div className="faq-right">
           <div className="faq-item">
-            <div className="faq-question active"><span>What services do you offer to help businesses grow?</span><span className="faq-icon active"></span></div>
-            <div className="faq-answer active"><div className="faq-answer-text">We offer comprehensive digital solutions including web development, mobile app development, digital marketing, SEO optimization, and business consulting...</div></div>
+            <div className="faq-question active" >
+              <span>What services do you offer to help businesses grow?</span>
+              <span className="faq-icon active"></span>
+            </div>
+            <div className="faq-answer active">
+              <div className="faq-answer-text">
+                We offer comprehensive digital solutions including web
+                development, mobile app development, digital marketing, SEO
+                optimization, and business consulting. Our team works closely
+                with clients to create customized strategies that drive growth
+                and increase revenue.
+              </div>
+            </div>
           </div>
+
           <div className="faq-item">
-            <div className="faq-question"><span>How long does it typically take to complete a project?</span><span className="faq-icon"></span></div>
-            <div className="faq-answer"><div className="faq-answer-text">Project timelines vary depending on scope and complexity. A basic website might take 2–4 weeks, while complex apps can take 3–6 months...</div></div>
+            <div className="faq-question" >
+              <span
+                >How long does it typically take to complete a project?</span
+              >
+              <span className="faq-icon"></span>
+            </div>
+            <div className="faq-answer">
+              <div className="faq-answer-text">
+                Project timelines vary depending on scope and complexity. A
+                basic website might take 2-4 weeks, while complex applications
+                can take 3-6 months. We provide detailed timelines during our
+                initial consultation and keep you updated throughout the
+                development process.
+              </div>
+            </div>
           </div>
+
           <div className="faq-item">
-            <div className="faq-question"><span>Do you provide ongoing support after project completion?</span><span className="faq-icon"></span></div>
-            <div className="faq-answer"><div className="faq-answer-text">Yes! We offer comprehensive post-launch support including maintenance, updates, bug fixes, and technical assistance...</div></div>
+            <div className="faq-question" >
+              <span
+                >Do you provide ongoing support after project completion?</span
+              >
+              <span className="faq-icon"></span>
+            </div>
+            <div className="faq-answer">
+              <div className="faq-answer-text">
+                Yes! We offer comprehensive post-launch support including
+                maintenance, updates, bug fixes, and technical assistance. We
+                have different support packages available to meet your specific
+                needs and ensure your digital solutions continue performing
+                optimally.
+              </div>
+            </div>
           </div>
+
           <div className="faq-item">
-            <div className="faq-question"><span>What is your pricing structure for different services?</span><span className="faq-icon"></span></div>
-            <div className="faq-answer"><div className="faq-answer-text">Our pricing is project-based and depends on requirements, complexity, and timeline. We offer competitive rates with transparent pricing...</div></div>
+            <div className="faq-question" >
+              <span
+                >What is your pricing structure for different services?</span
+              >
+              <span className="faq-icon"></span>
+            </div>
+            <div className="faq-answer">
+              <div className="faq-answer-text">
+                Our pricing is project-based and depends on requirements,
+                complexity, and timeline. We offer competitive rates with
+                transparent pricing - no hidden fees. Contact us for a free
+                consultation and detailed quote tailored to your specific needs.
+              </div>
+            </div>
           </div>
+
           <div className="faq-item">
-            <div className="faq-question"><span>Can you work with our existing team and systems?</span><span className="faq-icon"></span></div>
-            <div className="faq-answer"><div className="faq-answer-text">Absolutely! We're experienced in integrating with existing teams and systems. We can work alongside your developers and adapt to your workflow...</div></div>
+            <div className="faq-question" >
+              <span>Can you work with our existing team and systems?</span>
+              <span className="faq-icon"></span>
+            </div>
+            <div className="faq-answer">
+              <div className="faq-answer-text">
+                Absolutely! We're experienced in integrating with existing teams
+                and systems. We can work alongside your current developers,
+                integrate with your existing tools, and adapt to your workflow.
+                We believe in collaborative partnerships that enhance your
+                current capabilities.
+              </div>
+            </div>
           </div>
         </div>
       </div>

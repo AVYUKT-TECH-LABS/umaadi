@@ -1,12 +1,9 @@
-"use client"
-import type { Metadata } from "next";
-import 'bootstrap/dist/css/bootstrap.min.css';
+"use client";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import Script from "next/script";
 import Link from "next/link";
-import {useEffect} from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import "swiper/css";
 
 // export const metadata: Metadata = {
 //   title: "Protection Website",
@@ -40,6 +37,16 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
         />
       </head>
       <body>
@@ -180,12 +187,24 @@ export default function RootLayout({
                     <div className="footer-column">
                       <h6>Explore</h6>
                       <ul>
-                        <li><a href="#">What We Do</a></li>
-                        <li><a href="#">Our Process</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Blog & Insights</a></li>
-                        <li><a href="#">Resources</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li>
+                          <a href="#">What We Do</a>
+                        </li>
+                        <li>
+                          <a href="#">Our Process</a>
+                        </li>
+                        <li>
+                          <a href="#">Case Studies</a>
+                        </li>
+                        <li>
+                          <a href="#">Blog & Insights</a>
+                        </li>
+                        <li>
+                          <a href="#">Resources</a>
+                        </li>
+                        <li>
+                          <a href="#">FAQs</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -193,10 +212,18 @@ export default function RootLayout({
                     <div className="footer-column">
                       <h6>Company</h6>
                       <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/service1">Service</Link></li>
-                        <li><Link href="/projects">Projects</Link></li>
-                        <li><Link href="/about">About Us</Link></li>
+                        <li>
+                          <Link href="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link href="/service1">Service</Link>
+                        </li>
+                        <li>
+                          <Link href="/projects">Projects</Link>
+                        </li>
+                        <li>
+                          <Link href="/about">About Us</Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -204,10 +231,18 @@ export default function RootLayout({
                     <div className="footer-column">
                       <h6>Legal Links</h6>
                       <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
-                        <li><a href="#">Copyright</a></li>
+                        <li>
+                          <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                          <a href="#">Cookie Policy</a>
+                        </li>
+                        <li>
+                          <a href="#">Disclaimer</a>
+                        </li>
+                        <li>
+                          <a href="#">Copyright</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -221,9 +256,7 @@ export default function RootLayout({
 
               {/* Footer Bottom */}
               <div className="footer-bottom">
-                <p className="copyright">
-                  © Umaadi Inc. All Rights Reserved.
-                </p>
+                <p className="copyright">© Umaadi Inc. All Rights Reserved.</p>
                 <a href="#top" className="back-to-top">
                   <i className="fas fa-arrow-up"></i>
                   back to top
@@ -234,6 +267,14 @@ export default function RootLayout({
         </div>
 
         {/* ✅ Scripts */}
+        <Script
+          src="https://code.jquery.com/jquery-3.6.0.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+          strategy="beforeInteractive"
+        />
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           strategy="afterInteractive"
