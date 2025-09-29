@@ -277,7 +277,7 @@ function page() {
           </div>
           <p className="partner-para">
             Our reputable partners underscore our commitment to quality,
-            illustrating the strong relationships we've built with top brands in
+            illustrating the strong relationships we&apos;ve built with top brands in
             the industry.
           </p>
 

@@ -29,7 +29,7 @@ function page() {
                 dolore magna aliqua. Ut enim ad minim veniam.
               </p>
 
-              <h2 className="mb-4 what-include">What's Includes?</h2>
+              <h2 className="mb-4 what-include">What&apos;s Includes?</h2>
               <div className="row what-includes">
                 <div className="col-md-6">
                   <p>1. Lorem ipsum dolor sit amet.</p>
@@ -62,7 +62,7 @@ function page() {
             ad minim veniam.
           </p>
 
-          <h3 className="quote mb-5">" Defend to the End "</h3>
+          <h3 className="quote mb-5">&quot; Defend to the End &quot;</h3>
 
           <div className="image-container mx-auto">
             <Image

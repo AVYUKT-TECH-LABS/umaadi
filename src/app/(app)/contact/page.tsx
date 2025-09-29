@@ -10,7 +10,7 @@ function page() {
             <div className="pe-lg-4">
               <h2 className="contact-title">
                 Get in Touch –<br />
-                We're Here to Help!
+                We&apos;re Here to Help!
               </h2>
               <p className="contact-subtitle">
                 Have questions or need assistance? Our team is always ready to
