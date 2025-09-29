@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
+import Image from "next/image";
 
 interface Testimonial {
   name: string;
@@ -75,7 +76,13 @@ function TestimonialSection() {
             <SwiperSlide key={index}>
               <div className="testimonial-card">
                 <div className="client-info">
-                  <img src={t.avatar} alt={t.name} className="client-avatar" />
+                  <Image
+                    src={t.avatar}
+                    alt={t.name}
+                    width={100}
+                    height={60}
+                    className="client-avatar"
+                  />
                   <div className="client-details">
                     <h4>{t.name}</h4>
                     {t.role && <p>{t.role}</p>}
@@ -91,10 +98,12 @@ function TestimonialSection() {
                 </div>
 
                 <div className="testimonial-text-wrapper">
-                  <img
-                    src="img/quotation-marks.png"
+                  <Image
+                    src="/img/quotation-marks.png"
                     className="quote-icon"
                     alt="quote"
+                    width={100}
+                    height={60}
                   />
                   <p className="testimonial-text">{t.text}</p>
                 </div>

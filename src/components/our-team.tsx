@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import Image from "next/image";
 
 interface TeamMember {
   name: string;
@@ -18,22 +19,22 @@ const teamMembers: TeamMember[] = [
   {
     name: "Adolf Stalin",
     role: "Cybersecurity Specialist Mentor",
-    img: "img/about-1.png",
+    img: "/img/about-1.png",
   },
   {
     name: "Colin Munro",
     role: "AI Expert Mentor",
-    img: "img/about-image.png",
+    img: "/img/about-image.png",
   },
   {
     name: "Sophie Johnson",
     role: "Data Analyst Mentor",
-    img: "img/about-3.png",
+    img: "/img/about-3.png",
   },
   {
     name: "John Smith",
     role: "Web Developer Mentor",
-    img: "img/about-image.png",
+    img: "/img/about-image.png",
   },
 ];
 
@@ -56,9 +57,11 @@ const OurTeam: React.FC = () => {
         {teamMembers.map((member, idx) => (
           <SwiperSlide key={idx}>
             <div className="card">
-              <img
+              <Image
                 src={member.img}
                 alt={member.name}
+                width={200}
+                height={120}
                 className="card-img-top"
               />
               <div className="p-3 d-flex flex-column justify-content-center align-items-start">

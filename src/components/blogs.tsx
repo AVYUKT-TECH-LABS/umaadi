@@ -6,6 +6,7 @@ import { Navigation } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import Image from "next/image";
 
 interface BlogPost {
   image: string;
@@ -16,35 +17,35 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    image: "img/Picture (1).png",
+    image: "/img/Picture (1).png",
     alt: "Modern Web Development",
     title: "Essential Developer Tools & Workflows",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    image: "img/Picture (2).png",
+    image: "/img/Picture (2).png",
     alt: "React Applications",
     title: "Essential Developer Tools & Workflows",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    image: "img/Picture (3).png",
+    image: "/img/Picture (3).png",
     alt: "UI/UX Design",
     title: "Essential Developer Tools & Workflows",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    image: "img/Picture (4).png",
+    image: "/img/Picture (4).png",
     alt: "Performance Optimization",
     title: "Essential Developer Tools & Workflows",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    image: "img/Picture.png",
+    image: "/img/Picture.png",
     alt: "Developer Tools",
     title: "Essential Developer Tools & Workflows",
     description:
@@ -93,7 +94,13 @@ function BlogSection() {
         {blogPosts.map((post, index) => (
           <SwiperSlide key={index}>
             <div className="card-image">
-              <img src={post.image} alt={post.alt} />
+              <Image
+                src={post.image}
+                alt={post.alt}
+                width={300}
+                height={200}
+                className="blog-card-image"
+              />
             </div>
             <div className="card-content">
               <h3 className="card-title">{post.title}</h3>
@@ -105,10 +112,15 @@ function BlogSection() {
 
         {/* Custom Navigation */}
         <div className="custom-prev-button">
-          <img src="img/Vector-1.png" alt="Previous" />
+          <Image
+            src="/img/Vector-1.png"
+            alt="Previous"
+            width={24}
+            height={24}
+          />
         </div>
         <div className="custom-next-button">
-          <img src="img/Vector-1.png" alt="Next" />
+          <Image src="/img/Vector-1.png" alt="Next" width={24} height={24} />
         </div>
       </Swiper>
     </div>

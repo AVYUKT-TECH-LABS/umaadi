@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 function Footer() {
@@ -6,7 +7,7 @@ function Footer() {
       <div className="container footer-content">
         <div className="text-center">
           <div className="footer-logo">
-            <img src="img/logo.png" alt="" />
+            <Image src="/img/logo.png" alt="" width={200} height={60} />
           </div>
           <p className="footer-tagline">
             Unlock performance with data-driven campaigns, creative

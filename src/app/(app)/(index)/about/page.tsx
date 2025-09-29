@@ -3,6 +3,7 @@ import SecuritySection from "../../../../components/security";
 import PartnersSection from "../../../../components/partners";
 import FAQSection from "../../../../components/faq";
 import OurTeam from "../../../../components/our-team";
+import Image from "next/image";
 
 function page() {
   return (
@@ -39,7 +40,12 @@ function page() {
         <div className="container">
           <div className="journey-item">
             <div className="journey-image">
-              <img src="img/Rectangle-5.png" alt="Journey" />
+              <Image
+                src="/img/Rectangle-5.png"
+                alt="Journey"
+                width={100}
+                height={60}
+              />
               <div className="arrow-icon">➜</div>
             </div>
             <div className="journey-content">
@@ -54,7 +60,12 @@ function page() {
 
           <div className="journey-item reverse">
             <div className="journey-image">
-              <img src="img/Rectangle-5.png" alt="Mission" />
+              <Image
+                src="/img/Rectangle-5.png"
+                alt="Mission"
+                width={100}
+                height={60}
+              />
               <div className="arrow-icon">➜</div>
             </div>
             <div className="journey-content">
@@ -69,7 +80,12 @@ function page() {
 
           <div className="journey-item">
             <div className="journey-image">
-              <img src="img/Rectangle-5.png" alt="Vision" />
+              <Image
+                src="/img/Rectangle-5.png"
+                alt="Vision"
+                width={100}
+                height={60}
+              />
               <div className="arrow-icon">➜</div>
             </div>
             <div className="journey-content">
@@ -84,7 +100,12 @@ function page() {
 
           <div className="journey-item reverse">
             <div className="journey-image">
-              <img src="img/Rectangle-5.png" alt="Value" />
+              <Image
+                src="/img/Rectangle-5.png"
+                alt="Value"
+                width={100}
+                height={60}
+              />
               <div className="arrow-icon">➜</div>
             </div>
             <div className="journey-content">
@@ -118,10 +139,12 @@ function page() {
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-10 col-xl-8">
-              <img
-                src="img/Group 349.svg"
+              <Image
+                src="/img/Group 349.svg"
                 alt="Customer Centric Methodology"
                 className="methodology-image"
+                width={100}
+                height={60}
               />
             </div>
           </div>
@@ -288,10 +311,12 @@ function page() {
           </div>
 
           <div className="py-4">
-            <img
-              src="img/Group-195.png"
+            <Image
+              src="/img/Group-195.png"
               alt="Partner Logo 1"
               className="partner-logo-img"
+              width={700}
+              height={150}
             />
           </div>
         </div>

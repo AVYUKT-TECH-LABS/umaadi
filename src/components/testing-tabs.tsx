@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 type TabKey = "black-box" | "grey-box" | "white-box";
@@ -6,17 +7,17 @@ type TabKey = "black-box" | "grey-box" | "white-box";
 const tabContent: Record<TabKey, { text: string; img: string; alt: string }> = {
   "black-box": {
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    img: "img/Usb-malware.png",
+    img: "/img/Usb-malware.png",
     alt: "USB Bug",
   },
   "grey-box": {
     text: "This is the content for Grey Box testing. It involves some knowledge of the internal structure of the system.",
-    img: "img/Usb-malware.png",
+    img: "/img/Usb-malware.png",
     alt: "USB Bug",
   },
   "white-box": {
     text: "This is the content for White Box testing. It focuses on the internal working of the application.",
-    img: "img/Usb-malware.png",
+    img: "/img/Usb-malware.png",
     alt: "USB Bug",
   },
 };
@@ -62,10 +63,12 @@ const TestingTabs: React.FC = () => {
             <div className="row">
               <div className="col-lg-12 col-md-12 d-flex flex-column justify-content-center align-items-center">
                 <p>{content.text}</p>
-                <img
+                <Image
                   src={content.img}
                   alt={content.alt}
                   className="img-fluid usb-bug"
+                  width={100}
+                  height={60}
                 />
               </div>
             </div>

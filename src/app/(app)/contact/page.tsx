@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 function page() {
@@ -33,16 +34,36 @@ function page() {
                     <span className="contact-info-label">Social Network</span>
                     <div className="social-icons">
                       <a href="#" className="social-iconn">
-                        <img src="img/Twitter-umaadi.png" alt="" />
+                        <Image
+                          src="/img/Twitter-umaadi.png"
+                          alt=""
+                          width={40}
+                          height={40}
+                        />
                       </a>
                       <a href="#" className="social-iconn">
-                        <img src="img/Facebook-umaadi.png" alt="" />
+                        <Image
+                          src="/img/Facebook-umaadi.png"
+                          alt=""
+                          width={40}
+                          height={40}
+                        />
                       </a>
                       <a href="#" className="social-iconn">
-                        <img src="img/Instagram-umaadi.png" alt="" />
+                        <Image
+                          src="/img/Instagram-umaadi.png"
+                          alt=""
+                          width={40}
+                          height={40}
+                        />
                       </a>
                       <a href="#" className="social-iconn">
-                        <img src="img/Linkedin-umaadi.png" alt="" />
+                        <Image
+                          src="/img/Linkedin-umaadi.png"
+                          alt=""
+                          width={40}
+                          height={40}
+                        />
                       </a>
                     </div>
                   </div>

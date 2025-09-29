@@ -84,7 +84,7 @@ const StatSection: React.FC = () => {
             <div key={i} className="col-6 col-md-3 stat-item">
               <h3
                 className="counter"
-                ref={(el) => (countersRef.current[i] = el)}
+                ref={(el) => (countersRef.current[i] = el) as never}
               >
                 {stat.format === "k-decimal"
                   ? (stat.target / 1000).toFixed(1) + "k"

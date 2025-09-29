@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const servicesData = [
@@ -12,31 +13,31 @@ const servicesData = [
         title: "Infrastructure\nPenetration Testing",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Web Application Penetration Testing",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Web Application\nPenetration Testing",
         description:
           "We simulate multi-layered attacks by covering OWASP Top 10 to uncover vulnerabilities proactive hackers exploit across single-page.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Mobile Application\nPenetration Testing",
         description:
           "We simulate attacks targeting session handling, access control, and authentication mechanisms by covering OWASP.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Cloud\nPenetration Testing",
         description:
           "We simulate multi-layered attacks to uncover vulnerabilities proactive hackers exploit across single-page.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
     ],
   },
@@ -50,31 +51,31 @@ const servicesData = [
         title: "Data Protection\nAudit",
         description:
           "We perform comprehensive audits to assess your current data protection measures, identify weaknesses.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Encryption\nSolutions",
         description:
           "Our encryption services ensure that your data is unreadable to unauthorized users, both in transit and at rest.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Access Control\nManagement",
         description:
           "We implement strict access control policies to ensure that only authorized personnel can view, modify, or delete sensitive data.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Disaster Recovery\nPlanning",
         description:
           "We help you develop and implement robust disaster recovery plans to ensure business continuity and quick data recovery in the event.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Threat Monitoring\nand Response",
         description:
           "Our 24/7 monitoring services provide real-time threat detection and rapid response to security incidents, minimizing.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
     ],
   },
@@ -88,31 +89,31 @@ const servicesData = [
         title: "Static Application\nSecurity Testing (SAST)",
         description:
           "We analyze your application's source code to identify security vulnerabilities early in the development lifecycle.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Dynamic Application\nSecurity Testing (DAST)",
         description:
           "We test your running application from the outside, simulating real-world attacks to find vulnerabilities that may not be visible in the source code alone.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Source Code\nReview",
         description:
           "Our expert security engineers manually review your source code to find complex, business-logic flaws and automated tools often miss.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Code Audit\n& Hardening",
         description:
           "We perform a thorough audit of your codebase and provide recommendations to improve security, reduce attack surface, and implement secure coding practices.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
       {
         title: "Secure Development\nLifecycle (SDLC)",
         description:
           "We help you integrate security into every stage of your development process, from design to deployment, to build secure applications from the ground up.",
-        icon: "img/lock.png",
+        icon: "/img/lock.png",
       },
     ],
   },
@@ -207,7 +208,12 @@ const ServicesSlider = () => {
                         onClick={() => goToSlide(sectionIndex, slideIndex)}
                       >
                         <div className="slide-icon">
-                          <img src={slide.icon} alt="" />
+                          <Image
+                            src={slide.icon}
+                            alt=""
+                            width={100}
+                            height={60}
+                          />
                         </div>
                         <div className="slide-content">
                           <div className="slide-title">{slide.title}</div>

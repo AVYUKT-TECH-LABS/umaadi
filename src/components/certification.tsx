@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 type CertificateKey = "A" | "B";
@@ -16,11 +17,11 @@ const certificateData: Record<CertificateKey, CertificateData> = {
     year: "2024",
     revenue: "$1M+",
     images: [
-      "img/Picture (2).png",
-      "img/Picture (1).png",
-      "img/Picture.png",
-      "img/Picture (4).png",
-      "img/Picture (3).png",
+      "/img/Picture (2).png",
+      "/img/Picture (1).png",
+      "/img/Picture.png",
+      "/img/Picture (4).png",
+      "/img/Picture (3).png",
     ],
   },
   B: {
@@ -28,11 +29,11 @@ const certificateData: Record<CertificateKey, CertificateData> = {
     year: "2023",
     revenue: "$500K+",
     images: [
-      "img/Picture (2).png",
-      "img/Picture.png",
-      "img/Picture (1).png",
-      "img/Picture (3).png",
-      "img/Picture (4).png",
+      "/img/Picture (2).png",
+      "/img/Picture.png",
+      "/img/Picture (1).png",
+      "/img/Picture (3).png",
+      "/img/Picture (4).png",
     ],
   },
 };
@@ -95,13 +96,24 @@ function CertificationSection() {
             onClick={prevSlide}
             aria-label="Previous Slide"
           >
-            <img src="img/Vectorr-2.png" alt="Previous" />
+            <Image
+              src="/img/Vectorr-2.png"
+              alt="Previous"
+              width={20}
+              height={20}
+            />
           </button>
 
           <div className="cert-card-slider active">
             {images.map((src, index) => (
               <div key={index} className={getCardClass(index)}>
-                <img src={src} alt={`Certification ${index + 1}`} />
+                <Image
+                  src={src}
+                  alt={`Certification ${index + 1}`}
+                  width={400}
+                  height={300}
+                  className="cert-image"
+                />
               </div>
             ))}
           </div>
@@ -111,7 +123,7 @@ function CertificationSection() {
             onClick={nextSlide}
             aria-label="Next Slide"
           >
-            <img src="img/Vectorr-1.png" alt="Next" />
+            <Image src="/img/Vectorr-1.png" alt="Next" width={20} height={20} />
           </button>
         </div>
 

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -12,7 +13,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg">
       <div className="container">
         <a className="navbar-brand text-white fw-bold" href="#">
-          <img src="img/Frame-7.png" alt="" />
+          <Image src="/img/Frame-7.png" alt="" width={200} height={60} />
         </a>
         <button
           className="navbar-toggler bg-white"

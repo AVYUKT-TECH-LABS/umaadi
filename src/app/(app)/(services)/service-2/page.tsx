@@ -5,6 +5,7 @@ import PartnersSection from "../../../../components/partners";
 import FAQSection from "../../../../components/faq";
 import ApproachSection from "../../../../components/approach";
 import TestingTabs from "../../../../components/testing-tabs";
+import Image from "next/image";
 
 function page() {
   return (
@@ -64,16 +65,20 @@ function page() {
           <h3 className="quote mb-5">" Defend to the End "</h3>
 
           <div className="image-container mx-auto">
-            <img
-              src="img/service-image-1.svg"
+            <Image
+              src="/img/service-image-1.svg"
               alt="Cybersecurity Tags Desktop"
               className="img-fluid benefits-image desktop-img"
+              width={100}
+              height={60}
             />
 
-            <img
-              src="img/service-image.svg"
+            <Image
+              src="/img/service-image.svg"
               alt="Cybersecurity Tags Mobile"
               className="img-fluid benefits-image mobile-img"
+              width={100}
+              height={60}
             />
           </div>
         </div>
@@ -91,7 +96,7 @@ function page() {
             <div className="col-lg-6 col-md-12 feature-item pe-lg-5 pb-4 pb-lg-0 left-offset mb-0 feature-divider-1">
               <div className="d-flex align-items-start">
                 <div className="feature-icon me-3">
-                  <img src="img/Group.png" alt="" />
+                  <Image src="/img/Group.png" alt="" width={100} height={60} />
                 </div>
                 <div>
                   <h4 className="feature-title">Competitive Pricing</h4>
@@ -107,7 +112,7 @@ function page() {
             <div className="col-lg-6 col-md-12 feature-item ps-lg-5 pb-4 pb-lg-0 border-start-lg feature-divider ">
               <div className="d-flex align-items-start">
                 <div className="feature-icon me-3">
-                  <img src="img/Group.png" alt="" />
+                  <Image src="/img/Group.png" alt="" width={100} height={60} />
                 </div>
                 <div>
                   <h4 className="feature-title">Easy Financing</h4>
@@ -123,7 +128,7 @@ function page() {
             <div className="col-lg-6 col-md-12 feature-item pe-lg-5 pt-lg-4 pt-lg-5 left-offset left-border mt-4 mb-0 feature-dividerr">
               <div className="d-flex align-items-start">
                 <div className="feature-icon me-3">
-                  <img src="img/Group.png" alt="" />
+                  <Image src="/img/Group.png" alt="" width={100} height={60} />
                 </div>
                 <div>
                   <h4 className="feature-title">Certified Expert</h4>
@@ -139,7 +144,7 @@ function page() {
             <div className="col-lg-6 col-md-12 feature-item ps-lg-4 pt-5 pt-lg-4 border-start-lg right-border">
               <div className="d-flex align-items-start">
                 <div className="feature-icon me-3">
-                  <img src="img/Group.png" alt="" />
+                  <Image src="/img/Group.png" alt="" width={100} height={60} />
                 </div>
                 <div>
                   <h4 className="feature-title">100% Satisfaction</h4>
@@ -170,7 +175,8 @@ function page() {
             in just one click !!
           </div>
           <a href="#" className="cta-btn">
-            <img src="img/cta-arrow.png" alt="" /> VAPT Report
+            <Image src="/img/cta-arrow.png" alt="" width={20} height={20} />{" "}
+            VAPT Report
           </a>
         </div>
       </div>
