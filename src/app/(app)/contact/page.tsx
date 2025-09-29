@@ -144,8 +144,8 @@ function page() {
 
                 <div className="form-group">
                   <label className="form-label-custom">Service</label>
-                  <select className="form-select-custom">
-                    <option selected>Your Services</option>
+                  <select className="form-select-custom" defaultValue="web-development">
+                    {/* <option selected></option> */}
                     <option value="web-development">Web Development</option>
                     <option value="mobile-app">Mobile App Development</option>
                     <option value="digital-marketing">Digital Marketing</option>
